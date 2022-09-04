@@ -69,6 +69,18 @@ public class Restaurant {
 	
 	public int calculateOrderTotalCost(List<String> selectedItemsName){
     	int calculateOrderTotalCost = 0;
+    	List<Item> selectedItems = new ArrayList<Item>();
+    	
+    	for(String itemName: selectedItemsName) {
+    		Item tempItem = findItemByName(itemName);
+    		if(tempItem != null) {
+    			selectedItems.add(tempItem);
+    		}
+        }
+    	
+    	for(Item item: selectedItems) {
+    		calculateOrderTotalCost +=  item.getPrice();
+        }
     	
 		return calculateOrderTotalCost;
     }
