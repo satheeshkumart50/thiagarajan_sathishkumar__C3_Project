@@ -1,3 +1,5 @@
+
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -56,5 +58,26 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-      
+	
+	//<<<<<<<<<<<<<<<<<<<<CALCULATING TOTAL ORDER COST>>>>>>>>>>>>>>>>>>>>>>>>>>
+    @Test
+    public void calculate_total_cost_equal_to_388() {
+        //WRITE UNIT TEST CASE HERE
+    	
+    	Item item1 = Mockito.mock(Item.class);
+    	Item item2 = Mockito.mock(Item.class);
+    	
+    	Mockito.when(item1.getName()).thenReturn("Sweet corn soup");
+    	Mockito.when(item2.getName()).thenReturn("Vegetable lasagne");
+    	
+    	ArrayList<String> selectedItemsName = new ArrayList<String>();
+    	selectedItemsName.add(item1.getName());
+    	selectedItemsName.add(item2.getName());
+    	
+    	int totalCost = 0;
+    	totalCost = restaurant.calculateOrderTotalCost(selectedItemsName);
+    	assertEquals(388, totalCost);
+    	
+    }
+    //<<<<<<<<<<<<<<<<<<<<CALCULATING TOTAL ORDER COST>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
